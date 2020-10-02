@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "bfp",
+    "description": "This project is really great. expo@v35",
+    "slug": "bfp",
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.solutionsthroughcloud.bfp"
+    },
+    "android": {
+      "package": "com.solutionsthroughcloud.bfp"
+    }
+  }
+}
