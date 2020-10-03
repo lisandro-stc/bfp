@@ -3,6 +3,7 @@ import { RefreshControl, ScrollView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Header, ListItem, List } from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import { toUpper, isEmpty, map } from 'lodash';
 import { setActiveScreen, setValidationActiveTask, setValidationList } from '../actions';
 import { VALIDATION_HISTORY_LIST_URL, VALIDATION_HISTORY_LIST_NAV } from '../constants';
@@ -60,7 +61,7 @@ class ValidationHistoryList extends Component {
 
         </View>
       }
-      leftIcon={{ name: 'directions-car' }}
+      leftIcon={<Icon.MaterialIcons name='directions-car'size={24}/>}
       onPress={() => this._selectTask(task)}
     />);
   }

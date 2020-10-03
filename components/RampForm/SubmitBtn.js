@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import {Button} from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {setCarInfo, setErrors, resetCarInfo} from '../../actions';
@@ -18,7 +19,7 @@ class SubmitBtn extends Component {
         <Button
           loading={this.state.loading}
           backgroundColor={MAIN_COLOR}
-          icon={{name: 'save'}}
+          icon={<Icon.MaterialIcons name='save'size={24}/>}
           title='CREATE TICKET' 
           onPress={this._save}
         />

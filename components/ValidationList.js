@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {RefreshControl, ScrollView, View, Text} from 'react-native';
+import * as Icon from '@expo/vector-icons';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {Header, ListItem, List } from 'react-native-elements';
@@ -78,7 +79,7 @@ class ValidationList extends Component {
             <Text style={{ color: '#848484' }}>validation justifiable: {this._validationCountDisplay(task.validation_count)}</Text>
           </View>
         }
-        leftIcon={{ name: 'directions-car' }}
+        leftIcon={<Icon.MaterialIcons name='directions-car'size={24}/>}
         onPress={() => this._selectTask(task)}
       />);
     });

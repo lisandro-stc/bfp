@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, RefreshControl, View, Text } from 'react-native';
 import { Input, Header, List, ListItem } from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { isEmpty, toUpper, map, filter, toLower } from 'lodash';
 import axios from 'axios';
@@ -56,7 +57,7 @@ class ActiveTaskList extends Component {
               <Text>task: {task.opt || '-'} || status: {task.status_title || '-'}</Text>
             </View>
           }
-          leftIcon={{ name: 'directions-car' }}
+          leftIcon={<Icon.MaterialIcons name='directions-car'size={24}/>}
           onPress={() => this._selectTask(task)}
         />
       );

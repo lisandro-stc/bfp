@@ -1,7 +1,8 @@
 import React,{Component} from 'react' 
 import {ScrollView, View, Text} from 'react-native';
 import {toUpper} from 'lodash';
-import {ListItem, List, Icon, Header} from 'react-native-elements';
+import {ListItem, List, Header} from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import Barcode from 'react-native-barcode-builder';
 
 export default class ActiveTaskListSelected extends Component {
@@ -10,7 +11,7 @@ export default class ActiveTaskListSelected extends Component {
     return (
       <View style={{flex: 1}}>
         <Header
-          leftComponent={<Icon name='md-arrow-round-back' type='ionicon' color='#fff' onPress={onBackPress} />}
+          leftComponent={<Icon.Ionicons name='md-arrow-round-back' size={24} color='#fff' onPress={onBackPress} />}
           centerComponent={{ text: selectedTask.status, style: { color: '#fff' } }}
         />
         <ScrollView style={{marginTop: 20, marginBottom: 50}} >

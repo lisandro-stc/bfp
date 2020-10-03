@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as Notifications from 'expo-notifications';
 import {  View, ScrollView, Alert, RefreshControl } from 'react-native';
 import { Text, List, ListItem, Header } from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import axios from 'axios';
 import { toUpper, toLower, isEmpty, map } from 'lodash';
 import {
@@ -75,13 +76,13 @@ class CarAvailable extends Component {
   _listItem(carsAssign) {
     const listItems = map(carsAssign, (task, i) => {
 
-      const iconStyle = task.is_late_checkout ? {style: {color: 'red'}} : {};
+      //const iconStyle = task.is_late_checkout ? {style: {color: 'red'}} : {style: {color: 'red'}};
       return (<ListItem
         containerStyle={{backgroundColor: (toLower(task.opt) == 'pickup' ? '#FFCCCC' : '#fff') }}
         key={i}
         title={`${toUpper(task.requestor)}: ${toUpper(task.opt)}`}
         subtitle={`#${task.ticketno} ${task.status_title}`}
-        leftIcon={{ name: 'directions-car', ...iconStyle }}
+        leftIcon={<Icon.MaterialIcons name='directions-car'size={24} color={task.is_late_checkout ? 'red' : ''}/>}
         onPress={() => this._selectTask(task)}
       />);
     });

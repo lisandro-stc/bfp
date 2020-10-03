@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, View, ScrollView, Text } from 'react-native';
-import { Header, List, ListItem, Icon } from 'react-native-elements';
+import { Header, List, ListItem } from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { toUpper } from 'lodash';
@@ -30,7 +31,7 @@ class ValidationActiveTask extends Component {
     return (
       <View style={{ flex: 1 }}>
         <Header
-          leftComponent={<Icon name='md-arrow-round-back' type='ionicon' color='#fff' onPress={this._onBackBtnPress} />}
+          leftComponent={<Icon.Ionicons name='md-arrow-round-back' size={24} color='#fff' onPress={this._onBackBtnPress} />}
           centerComponent={{ text: active_task.ticket_number || '-', style: { color: '#fff' } }}
         />
 

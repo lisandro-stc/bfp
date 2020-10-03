@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Alert, AsyncStorage} from 'react-native';
-import {Icon, Header} from 'react-native-elements';
+import {Header} from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {logoutUser} from '../actions';
@@ -56,43 +57,43 @@ class Footer extends Component {
         outerContainerStyles={oc}
         innerContainerStyles={ic}
       >
-        <Icon 
+        <Icon.MaterialCommunityIcons 
           name='home' 
-          type='material-community' 
+          size={24}
           color={this._screenMenuColor(HOME_NAV)}
           onPress={this._screenMenuOnPress(HOME_NAV)}
         />
 
         {this.props.user.type === 'manager'
-          ? <Icon
+          ? <Icon.Octicons
             name='tasklist'
-            type='octicon'
+            size={24}
             color={this._screenMenuColor(VALIDATION_HISTORY_LIST_NAV)}
             onPress={this._screenMenuOnPress(VALIDATION_HISTORY_LIST_NAV)}
           /> : null
         }
 
         {this.props.user.type === 'ramp'
-          ? <Icon
+          ? <Icon.Octicons
             name='tasklist'
-            type='octicon'
+            size={24}
             color={this._screenMenuColor(CAR_AVAILABLE_LIST_NAV)}
             onPress={this._screenMenuOnPress(CAR_AVAILABLE_LIST_NAV)}
           /> : null
         }
 
         {this.props.user.type === 'ramp'  
-          ? <Icon 
+          ? <Icon.MaterialCommunityIcons 
             name='barcode-scan' 
-            type='material-community' 
+            size={24}
             color={this._screenMenuColor(RAMP_ADD_CAR_NAV)}
             onPress={this._screenMenuOnPress(RAMP_ADD_CAR_NAV)}
           /> : null
         }
 
-        <Icon 
+        <Icon.FontAwesome 
           name='sign-out' 
-          type='font-awesome' 
+          size={24}
           color={NOT_ACTIVE_SCREEN_COLOR}
           onPress={this._logout}
         />

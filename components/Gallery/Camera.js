@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, ActivityIndicator } from "react-native";
-import { Icon } from "react-native-elements";
+import * as Icon from '@expo/vector-icons';
 import { ImagePicker } from "expo";
 import * as Permissions from "expo-permissions";
 import { connect } from "react-redux";
@@ -21,7 +21,7 @@ class Camera extends React.Component {
     return this.state.uploading ? (
       <ActivityIndicator size="small" color="#00ff00" />
     ) : (
-      <Icon name="camera" type="entypo" color="#222" onPress={this._action} />
+      <Icon.Entypo name="camera" size={24} color="#222" onPress={this._action} />
     );
   }
 

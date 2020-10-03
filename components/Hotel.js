@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View} from 'react-native';
 import {Text, Input, Button}  from 'react-native-elements';
+import * as Icon from '@expo/vector-icons';
 import {connect} from 'react-redux';
 import {has, toUpper} from 'lodash';
 import axios from 'axios';
@@ -43,7 +44,7 @@ class Hotel extends Component {
           : <Button 
             loading={this.state.loading} 
             backgroundColor={MAIN_COLOR} 
-            icon={{name: 'search'}} 
+            icon={<Icon.MaterialIcons name='search'size={24}/>} 
             title='SEARCH' 
             onPress={this._searchTicket} />
         }
