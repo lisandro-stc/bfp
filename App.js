@@ -16,7 +16,7 @@ export default class App extends Component {
   render() {
     
     const navOption = {
-      header: null,
+      headerShown: false,
     };
 
     const navOptionWithHeader = (title) => ({
@@ -32,22 +32,22 @@ export default class App extends Component {
       },
       Home: {
         screen: HomeScreen,
-        navigationOptions: { ...navOption, headerLeft: null}
+        navigationOptions: { ...navOption, headerLeft: ()=>{}}
       },
 
       RampAddCar: {
         screen: RampAddCarScreen,
-        navigationOptions: { ...navOption, headerLeft: null}
+        navigationOptions: { ...navOption, headerLeft: ()=>{}}
       },
 
       CarAvailable: {
         screen: CarAvailableScreen,
-        navigationOptions: { ...navOption, headerLeft: null }
+        navigationOptions: { ...navOption, headerLeft: ()=>{} }
       },
 
       ValidationHistoryList: {
         screen: ValidationHistoryListScreen,
-        navigationOptions: { ...navOption, headerLeft: null }
+        navigationOptions: { ...navOption, headerLeft: ()=>{} }
       },
     });
   
