@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Modal, StyleSheet } from 'react-native';
 import { BarCodeScanner } from 'expo';
 import {connect} from 'react-redux';
-import {Input} from 'react-native-elements';
-import * as Icon from '@expo/vector-icons';
+import {Icon, FormInput, FormLabel} from 'react-native-elements';
 import {setCarInfo} from '../actions';
 import { WIN_WIDTH} from '../constants';
 
@@ -15,18 +14,20 @@ class Barcode extends React.Component {
   render() {
     return (    
       <View>
-        <Input label={"TICKET NO."} />
+        <FormLabel>
+          TICKET NO.
+        </FormLabel>
 
         <View style={{ flexDirection: 'row', width: WIN_WIDTH }}>
           <View style={{ width: WIN_WIDTH*0.8 }}>
-            <Input onChangeText={(val) => this.props.setCarInfo({ticketno: val})} value={this.props.car.ticketno} keyboardType='numeric' />
+            <FormInput onChangeText={(val) => this.props.setCarInfo({ticketno: val})} value={this.props.car.ticketno} keyboardType='numeric' />
           </View>
 
           <View style={{ width: WIN_WIDTH * 0.2 }}>
-          <Icon.MaterialCommunityIcons
+          <Icon
             iconStyle={{marginTop: 10 }}
             name='barcode-scan'
-            size={24}
+            type='material-community'
             onPress={() => this.setState({...this.state, showBarcode: true})}
             />
           </View>

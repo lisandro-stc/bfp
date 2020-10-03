@@ -52,7 +52,7 @@ class Steps extends Component {
         />
 
         {active_task.ticketno != '' && <Barcode value={active_task.ticketno} format="CODE128" />}
-        <View containerStyle={{marginBottom: 20}}>
+        <List containerStyle={{marginBottom: 20}}>
           <ListItem
             hideChevron
             title={active_task.ticketno || '-'}
@@ -143,7 +143,7 @@ class Steps extends Component {
               : (active_task.comment || '-')}
             subtitle='COMMENT'
           />
-        </View>
+        </List>
           
         <Gallery />
         <Button

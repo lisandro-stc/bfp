@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, TextInput} from 'react-native';
-import {Input} from 'react-native-elements';
+import {FormLabel} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {setCarInfo} from '../../actions';
 
 const Comment = (props) => (
   <View>
-    <Input label={"COMMENT"} />
+    <FormLabel>COMMENT </FormLabel>
     <TextInput
       multiline={true}
       numberOfLines={4}

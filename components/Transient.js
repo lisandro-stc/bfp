@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {Button, Text, Input}  from 'react-native-elements';
-import * as Icon from '@expo/vector-icons';
+import {Button, Text, FormValidationMessage, FormLabel, FormInput}  from 'react-native-elements';
 import {connect} from 'react-redux';
 import {has, toUpper} from 'lodash';
 import axios from 'axios';
@@ -25,7 +24,7 @@ class Transient extends Component {
     ]
   }
 
-  componentWillMount = () => this.props.setCarInfo({ name: this.props.selected_location });
+  componentDidMount = () => this.props.setCarInfo({ name: this.props.selected_location });
 
   render() {
     const { setCarInfo, car, error } = this.props;
@@ -33,14 +32,14 @@ class Transient extends Component {
     return (
       <View>
         <Barcode />
-        {this.state.hasValidTicket && has(error, 'ticketno') && <Input errorMessage={error.ticketno}/>}
+        {this.state.hasValidTicket && <FormValidationMessage>{has(error, 'ticketno') && error.ticketno}</FormValidationMessage>}
         {
           this.state.hasValidTicket
             ? this._transientForm()
             : <Button
               loading={this.state.loading}
               backgroundColor={MAIN_COLOR}
-              icon={<Icon.MaterialIcons name='search'size={24}/>}
+              icon={{ name: 'search' }}
               title='SEARCH'
               onPress={this._searchTicket} />
         }
@@ -54,42 +53,42 @@ class Transient extends Component {
 
     return (
       <View>
-        <Input label={"OPTION"} />
+        <FormLabel>OPTION</FormLabel>
         <Option />
-        {has(error, 'opt') && <Input errorMessage={error.opt}/>}
+        <FormValidationMessage>{has(error, 'opt') && error.opt}</FormValidationMessage>
 {/*         
         {car.opt == 'delivery' && <FormLabel>FLOOR NUMBER</FormLabel>}
-        {car.opt == 'delivery' && <Input onChangeText={floor_number => setCarInfo({floor_number})} value={car.floor_number} />}
+        {car.opt == 'delivery' && <FormInput onChangeText={floor_number => setCarInfo({floor_number})} value={car.floor_number} />}
         {car.opt == 'delivery' && <FormValidationMessage>{has(error,'floor_number') && error.floor_number}</FormValidationMessage>} */}
 
-        <Input label={"HOTEL NAME"} />
+        <FormLabel>HOTEL NAME</FormLabel>
         <View style={{ margin: 15 }}>
           <Text style={{ marginLeft: 5 }}>{toUpper(car.name)}</Text>
         </View>
-        {has(error, 'name') && <Input errorMessage={error.name}/>}
+        <FormValidationMessage>{has(error, 'name') && error.name}</FormValidationMessage>
 
-        <Input label={"CHECKOUT DATE"} />
+        <FormLabel>CHECKOUT DATE</FormLabel>
         <View style={{marginLeft: 15}}>
           <CheckOutDate date={this.props.car.checkout_date} onDateChange={checkout_date => setCarInfo({ checkout_date })} />
         </View>
-        {has(error,'checkout_date') && <Input errorMessage={error.checkout_date}/>}
+        <FormValidationMessage>{has(error,'checkout_date') && error.checkout_date}</FormValidationMessage>
 
-        <Input label={"PAYMENT METHOD"} />
+        <FormLabel>PAYMENT METHOD</FormLabel>
         <View style={{ marginLeft: 10 }}>
           <Picker value={car.payment_method} onValueChange={payment_method => setCarInfo({ payment_method })} options={paymentMethodOptions} />
         </View>
-        {has(error, 'payment_method') && <Input errorMessage={error.payment_method}/>}
+        <FormValidationMessage>{has(error, 'payment_method') && error.payment_method}</FormValidationMessage>
 
-        <Input label={"CONTACT NO."} />
-        <Input
+
+        <FormLabel>CONTACT NO.</FormLabel>
+        <FormInput
           inputStyle={{ marginLeft: 5 }}
           onChangeText={contact_no => setCarInfo({ contact_no })}
           value={car.contact_no}
           placeholder='09xxxxxxxxx'
           dataDetectorTypes='phoneNumber'
           keyboardType='phone-pad' />
-        {has(error, 'contact_no') && <Input errorMessage={error.contact_no}/>}
-
+        <FormValidationMessage>{has(error, 'contact_no') && error.contact_no}</FormValidationMessage>
 
         <CarDetailsInput />
         <Comment />

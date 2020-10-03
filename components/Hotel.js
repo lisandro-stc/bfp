@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { View} from 'react-native';
-import {Text, Input, Button}  from 'react-native-elements';
-import * as Icon from '@expo/vector-icons';
+import {Text, FormLabel, FormInput, FormValidationMessage, Button}  from 'react-native-elements';
 import {connect} from 'react-redux';
 import {has, toUpper} from 'lodash';
 import axios from 'axios';
@@ -31,20 +30,20 @@ class Hotel extends Component {
 
     return (
       <View>
-        <Input label={"HOTEL NAME"} />
+        <FormLabel>HOTEL NAME</FormLabel>
         <View style={{ margin: 15 }}>
           <Text style={{marginLeft: 5}}>{toUpper(car.name)}</Text>
         </View>
-        {has(error, 'name') && <Input errorMessage={error.name}/>}
+        <FormValidationMessage>{has(error, 'name') && error.name}</FormValidationMessage>
         <Barcode />
-        {this.state.hasValidTicket  && has(error, 'ticketno') && <Input errorMessage={error.ticketno}/>}
+        {this.state.hasValidTicket  && <FormValidationMessage>{has(error, 'ticketno') && error.ticketno}</FormValidationMessage>}
         {
           this.state.hasValidTicket 
           ? this._hotelForm()
           : <Button 
             loading={this.state.loading} 
             backgroundColor={MAIN_COLOR} 
-            icon={<Icon.MaterialIcons name='search'size={24}/>} 
+            icon={{name: 'search'}} 
             title='SEARCH' 
             onPress={this._searchTicket} />
         }
@@ -88,31 +87,31 @@ class Hotel extends Component {
     return (
       <View>
         
-        <Input label={"OPTION"} />
+        <FormLabel>OPTION</FormLabel>
         <Option />
-        {has(error,'opt') && <Input errorMessage={error.opt}/>}
+        <FormValidationMessage>{has(error,'opt') && error.opt}</FormValidationMessage>
 {/*         
         {car.opt == 'delivery' && <FormLabel>FLOOR NUMBER</FormLabel>}
-        {car.opt == 'delivery' && <Input onChangeText={floor_number => setCarInfo({floor_number})} value={car.floor_number} />}
+        {car.opt == 'delivery' && <FormInput onChangeText={floor_number => setCarInfo({floor_number})} value={car.floor_number} />}
         {car.opt == 'delivery' && <FormValidationMessage>{has(error,'floor_number') && error.floor_number}</FormValidationMessage>}
          */}
-        <Input label={"GUEST NAME"} />
-        <Input onChangeText={guest_name => setCarInfo({guest_name})} value={car.guest_name} />
-        {has(error,'guest_name') && <Input errorMessage={error.guest_name}/>}
+        <FormLabel>GUEST NAME</FormLabel>
+        <FormInput onChangeText={guest_name => setCarInfo({guest_name})} value={car.guest_name} />
+          <FormValidationMessage>{has(error,'guest_name') && error.guest_name}</FormValidationMessage>
 
-          <Input label={"FOLIO NUMBER"} />
-        <Input onChangeText={folio_number => setCarInfo({folio_number})} value={car.folio_number} />
-        {has(error,'folio_number') && <Input errorMessage={error.folio_number}/>}
+        <FormLabel>FOLIO NUMBER</FormLabel>
+        <FormInput onChangeText={folio_number => setCarInfo({folio_number})} value={car.folio_number} />
+          <FormValidationMessage>{has(error,'folio_number') && error.folio_number}</FormValidationMessage>
 
-          <Input label={"ROOM NUMBER"} />
-        <Input onChangeText={room_number => setCarInfo({room_number})} value={car.room_number} />
-        {has(error,'room_number') && <Input errorMessage={error.room_number}/>}
+        <FormLabel>ROOM NUMBER</FormLabel>
+        <FormInput onChangeText={room_number => setCarInfo({room_number})} value={car.room_number} />
+          <FormValidationMessage>{has(error,'room_number') && error.room_number}</FormValidationMessage>
 
-          <Input label={"CHECKOUT DATE"} />
+        <FormLabel>CHECKOUT DATE</FormLabel>
         <View style={{marginLeft: 15}}>
           <CheckOutDate date={this.props.car.checkout_date} onDateChange={(checkout_date) => setCarInfo({ checkout_date })} />
         </View>
-        {has(error,'checkout_date') && <Input errorMessage={error.checkout_date}/>}
+        <FormValidationMessage>{has(error,'checkout_date') && error.checkout_date}</FormValidationMessage>
         <CarDetailsInput />
         <Comment />
         <SubmitBtn />

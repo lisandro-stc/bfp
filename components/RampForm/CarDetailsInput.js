@@ -3,24 +3,24 @@ import React from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {has} from 'lodash';
-import {Input} from 'react-native-elements';
+import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements';
 import {setCarInfo} from '../../actions';
 import CarPicker from '../CarPicker';
 
 const CarDetailsInput = (props) => (
   <View>
-    <Input label={"CAR COLOR"} />
-    <Input onChangeText={car_color => props.setCarInfo({ car_color })} value={props.car.car_color} />
+    <FormLabel>CAR COLOR</FormLabel>
+    <FormInput onChangeText={car_color => props.setCarInfo({ car_color })} value={props.car.car_color} />
 
-    <Input label={"CAR PLATE NO"} />
-    <Input onChangeText={car_plate_no => props.setCarInfo({ car_plate_no })} value={props.car.car_plate_no} />
-    {has(props.error, 'car_plate_no') && <Input errorMessage={props.error.car_plate_no}/>}
+    <FormLabel>CAR PLATE NO</FormLabel>
+    <FormInput onChangeText={car_plate_no => props.setCarInfo({ car_plate_no })} value={props.car.car_plate_no} />
+    <FormValidationMessage>{has(props.error, 'car_plate_no') && props.error.car_plate_no}</FormValidationMessage>
 
-    <Input label={"CAR MAKE&MODEL"} />
+    <FormLabel>CAR MAKE&MODEL</FormLabel>
     <View style={{margin: 15}}>
       <CarPicker value={props.car.car_model} onValueChange={car_model => props.setCarInfo({car_model})} />
     </View>
-      {has(props.error, 'car_model') && <Input errorMessage={props.error.car_model}/>}
+      <FormValidationMessage>{has(props.error, 'car_model') && props.error.car_model}</FormValidationMessage>
   </View>
 );
 

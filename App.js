@@ -42,12 +42,12 @@ export default class App extends Component {
 
       CarAvailable: {
         screen: CarAvailableScreen,
-        navigationOptions: { ...navOption, headerLeft: ()=>{} }
+        navigationOptions: { ...navOption, headerLeft: ()=>{}}
       },
 
       ValidationHistoryList: {
         screen: ValidationHistoryListScreen,
-        navigationOptions: { ...navOption, headerLeft: ()=>{} }
+        navigationOptions: { ...navOption, headerLeft: ()=>{}}
       },
     });
   

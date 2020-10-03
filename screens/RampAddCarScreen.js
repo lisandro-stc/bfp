@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, ScrollView, BackHandler} from 'react-native';
-import {Header, Input}  from 'react-native-elements';
+import {Header, FormLabel}  from 'react-native-elements';
 import {connect} from 'react-redux';
 import { RAMP_ADD_CAR_NAV, HOME_NAV} from '../constants';
 import {setErrors, resetCarInfo, setActiveScreen, setCarInfo} from '../actions';
@@ -58,7 +58,7 @@ class RampAddCar extends Component {
         <Header
           centerComponent={{ text: 'TICKETING', style: { color: '#fff' } }}
         />
-          <Input label={"TICKET TYPE"} />
+          <FormLabel>TICKET TYPE</FormLabel>
           <View style={{marginLeft:10}}>
           <Picker value={car.ticket_type} options={options} onValueChange={this._onTicketTypeChange} />
           </ View>

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {TextInput, Alert, View, ScrollView, Text} from 'react-native';
-import {Button, Header, List, ListItem} from 'react-native-elements';
-import * as Icon from '@expo/vector-icons';
+import {Button, Header, List, ListItem, Icon} from 'react-native-elements';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {toUpper} from 'lodash';
@@ -48,14 +47,14 @@ class ValidationActiveTask extends Component {
     return (
       <View style={{ flex: 1 }}>
       <Header
-        leftComponent={<Icon.Ionicons name='md-arrow-round-back' size={24} color='#fff' onPress={this._onBackBtnPress} />}
+        leftComponent={<Icon name='md-arrow-round-back' type='ionicon' color='#fff' onPress={this._onBackBtnPress} />}
         centerComponent={{ text: active_task.ticket_number || '-', style: { color: '#fff' } }}
       />
       
       <ScrollView keyboardShouldPersistTaps={'handled'}
         style={{ marginTop: 20}}
       >
-        <View containerStyle={{marginBottom: 20}}>
+        <List containerStyle={{marginBottom: 20}}>
           <ListItem
             hideChevron
             title={
@@ -143,7 +142,7 @@ class ValidationActiveTask extends Component {
                 value={active_task.comment} />}
             subtitle='COMMENT'
           />
-        </View>
+        </List>
         <Button
           loading={this.state.loading}
           buttonStyle={{backgroundColor: MAIN_COLOR}}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {Text, Input}  from 'react-native-elements';
+import {Text, FormValidationMessage, FormLabel}  from 'react-native-elements';
 import {connect} from 'react-redux';
 import {has, toUpper, map, findIndex} from 'lodash';
 import axios from 'axios';
@@ -35,41 +35,41 @@ class Monthly extends Component {
 
     return (
       <View>
-        <Input label={"GUEST NAME"} />
+        <FormLabel>GUEST NAME</FormLabel>
         <View style={{ marginLeft: 15 }}>
           <Picker value={car.guest_name} options={monthlyGuestOption} onValueChange={this._onGuestNameChange} />
         </View>
-        {has(error,'guest_name') && <Input errorMessage={error.guest_name}/>}
+        <FormValidationMessage>{has(error,'guest_name') && error.guest_name}</FormValidationMessage>
         
-        <Input label={"CONTACT NO."} />
+         <FormLabel>CONTACT NO.</FormLabel>
         <View style={{ marginLeft: 20 }}>
           <Text>{car.contact_no || '-'}</Text>
         </View>
-        <Input label={"OPTION"} />
+          <FormLabel>OPTION</FormLabel>
           <Option />
-          {has(error,'opt') && <Input errorMessage={error.opt}/>}
+          <FormValidationMessage>{has(error,'opt') && error.opt}</FormValidationMessage>
 {/*           
           {car.opt == 'delivery' && <FormLabel>FLOOR NUMBER</FormLabel>}
-          {car.opt == 'delivery' && <Input onChangeText={floor_number => setCarInfo({floor_number})} value={car.floor_number} />}
+          {car.opt == 'delivery' && <FormInput onChangeText={floor_number => setCarInfo({floor_number})} value={car.floor_number} />}
           {car.opt == 'delivery' && <FormValidationMessage>{has(error,'floor_number') && error.floor_number}</FormValidationMessage>}
          */}
           
-          <Input label={"HOTEL NAME"} />
+          <FormLabel>HOTEL NAME</FormLabel>
           <View style={{ marginLeft: 20 }}>
             <Text>{toUpper(car.name) || '-'}</Text>
           </View>
           
-          <Input label={"CAR COLOR"} />
+          <FormLabel>CAR COLOR</FormLabel>
           <View style={{ marginLeft: 20 }}>
             <Text>{toUpper(car.car_color) || '-'}</Text>
           </View>
       
-          <Input label={"CAR PLATE NO"} />
+          <FormLabel>CAR PLATE NO</FormLabel>
           <View style={{ marginLeft: 20 }}>
             <Text>{toUpper(car.car_plate_no) || '-'}</Text>
           </View>
   
-          <Input label={"CAR MAKE&MODEL"} />
+          <FormLabel>CAR MAKE&MODEL</FormLabel>
           
           <View style={{ marginLeft: 20 }}>
             <Text>{toUpper(car.car_model) || '-'}</Text>
