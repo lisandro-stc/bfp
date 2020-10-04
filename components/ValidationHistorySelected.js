@@ -4,7 +4,7 @@ import { Header, List, ListItem, Icon } from 'react-native-elements';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { toUpper } from 'lodash';
-import Barcode from 'react-native-barcode-builder';
+import Barcode from 'react-native-barcode-expo';
 import { setValidationActiveTask } from '../actions';
 import { errorHandler } from '../utilities';
 import { UPDATE_VALIDATION_TASK_URL, HOME_NAV } from '../constants';

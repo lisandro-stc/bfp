@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "bfp",
+    "name": "Beach Front Parking",
     "description": "This project is really great. expo@v35",
     "slug": "bfp",
     "privacy": "public",
@@ -18,7 +18,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.solutionsthroughcloud.bfp"
+      "bundleIdentifier": "com.solutionsthroughcloud.bfp",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "package": "com.solutionsthroughcloud.bfp"

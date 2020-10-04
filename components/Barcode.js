@@ -1,17 +1,38 @@
 import React from 'react';
-import { View, Modal, StyleSheet } from 'react-native';
-import { BarCodeScanner } from 'expo';
+import { View, Text, Modal, StyleSheet, Button } from 'react-native';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 import {connect} from 'react-redux';
 import {Icon, FormInput, FormLabel} from 'react-native-elements';
 import {setCarInfo} from '../actions';
 import { WIN_WIDTH} from '../constants';
+import * as Permissions from 'expo-permissions';
 
 class Barcode extends React.Component {
   state = {
     showBarcode: false,
+    hasCameraPermission: null,
+    scanned: false,
+  }
+
+  async componentDidMount() {
+    this.getPermissionsAsync();
+  }
+
+  getPermissionsAsync = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
   }
 
   render() {
+    const { showBarcode, hasCameraPermission, scanned } = this.state;
+
+    if (showBarcode === true && hasCameraPermission === null) {
+      return <Text>Requesting for camera permission</Text>;
+    }
+    if (showBarcode === true && hasCameraPermission === false) {
+      return <Text>No access to camera</Text>;
+    }
+
     return (    
       <View>
         <FormLabel>
@@ -32,16 +53,22 @@ class Barcode extends React.Component {
             />
           </View>
 
-          {this.state.showBarcode && <Modal
+          {showBarcode && <Modal
             animationType="slide"
             transparent={false}
             visible={this.state.viewImg}
             onRequestClose={() => this.setState({...this.state, showBarcode: false})}>
           <View style={{flex: 1}}>
             <BarCodeScanner
-              onBarCodeRead={this._handleBarCodeRead}
-              style={StyleSheet.absoluteFill}
+              onBarCodeScanned={scanned ? undefined : this._handleBarCodeRead}
+              style={StyleSheet.absoluteFillObject}
             />
+            {scanned && (
+              <Button
+                title={'Tap to Scan Again'}
+                onPress={() => this.setState({ scanned: false })}
+              />
+            )}
           </View>
         </Modal>}
         </View>
@@ -50,6 +77,7 @@ class Barcode extends React.Component {
   }
 
   _handleBarCodeRead = ({ type, data }) => {
+    this.setState({ scanned: true });
     this.props.setCarInfo({ticketno: data});
     this.setState(() => ({...this.state, showBarcode: false}));
   }

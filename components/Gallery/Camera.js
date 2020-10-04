@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, ActivityIndicator } from "react-native";
 import { Icon } from "react-native-elements";
-import { ImagePicker } from "expo";
+import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from "expo-permissions";
 import { connect } from "react-redux";
 import { setImages } from "../../actions";
@@ -35,6 +35,7 @@ class Camera extends React.Component {
 
   _takePhoto = async () => {
     let pickerResult = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: false,
       aspect: [4, 3]
     });
@@ -44,6 +45,7 @@ class Camera extends React.Component {
 
   _pickImage = async () => {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: false,
       aspect: [4, 3]
     });

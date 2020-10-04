@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {ScrollView, View, Text} from 'react-native';
 import {toUpper} from 'lodash';
 import {ListItem, List, Icon, Header} from 'react-native-elements';
-import Barcode from 'react-native-barcode-builder';
+import Barcode from 'react-native-barcode-expo';
 
 export default class ActiveTaskListSelected extends Component {
   render() {

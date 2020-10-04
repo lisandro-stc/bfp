@@ -4,7 +4,7 @@ import { View, Alert, ScrollView, TextInput} from 'react-native';
 import axios from 'axios';
 import {toLower, toUpper, isEmpty} from 'lodash';
 import { Header, Button, List, ListItem, Text} from 'react-native-elements';
-import Barcode from 'react-native-barcode-builder';
+import Barcode from 'react-native-barcode-expo';
 import { hasActiveCar, assignCars, updateActiveCar} from '../actions';
 import { 
   MAIN_COLOR, 
