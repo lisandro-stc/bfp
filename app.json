@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Beach Front Parking",
+    "name": "bfp",
     "description": "This project is really great. expo@v35",
     "slug": "bfp",
     "privacy": "public",
@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -19,7 +19,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.solutionsthroughcloud.bfp",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.2",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to allow users to send photos for processing orders. Your photos wont be shared without your permission",
+        "NSPhotoLibraryUsageDescription": "This app uses the camera to allow users to send photos for processing orders. Your photos wont be shared without your permission"
+      }
     },
     "android": {
       "package": "com.solutionsthroughcloud.bfp"
