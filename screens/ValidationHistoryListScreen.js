@@ -15,6 +15,16 @@ class ValidationHistoryList extends Component {
   }
 
   componentDidMount() {
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction();
+    })
+  }
+
+  componentWillUnmount () {
+    this.focusListener.remove();
+  }
+
+  onFocusFunction = () => {
     this.props.setValidationList({});
     this._fetchValidationHistory();
     this.props.setActiveScreen(VALIDATION_HISTORY_LIST_NAV);

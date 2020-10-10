@@ -113,7 +113,6 @@ class CarAvailable extends Component {
       <View style={{ flex: 1 }}>
         {header}
         {this._carListComp()}
-        <Footer />
       </View>
     );
   }

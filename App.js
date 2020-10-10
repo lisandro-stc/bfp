@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BackHandler} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
@@ -32,22 +31,22 @@ export default class App extends Component {
       },
       Home: {
         screen: HomeScreen,
-        navigationOptions: { ...navOption, headerLeft: ()=>{}}
+        navigationOptions: { ...navOption, headerLeft: null}
       },
 
       RampAddCar: {
         screen: RampAddCarScreen,
-        navigationOptions: { ...navOption, headerLeft: ()=>{}}
+        navigationOptions: { ...navOption, headerLeft: null}
       },
 
       CarAvailable: {
         screen: CarAvailableScreen,
-        navigationOptions: { ...navOption, headerLeft: ()=>{}}
+        navigationOptions: { ...navOption, headerLeft: null}
       },
 
       ValidationHistoryList: {
         screen: ValidationHistoryListScreen,
-        navigationOptions: { ...navOption, headerLeft: ()=>{}}
+        navigationOptions: { ...navOption, headerLeft: null}
       },
     });
   

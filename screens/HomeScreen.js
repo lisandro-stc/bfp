@@ -11,11 +11,18 @@ import CarAvailable from '../components/CarAvailable';
 class HomeScreen extends Component {
   componentDidMount() {
     this.backHandlerListener = BackHandler.addEventListener('hardwareBackPress', this._onBackPress);
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction();
+    })
+  }
+
+  onFocusFunction = () => {
     this.props.setActiveScreen(HOME_NAV);
   }
 
   componentWillUnmount() {
     this.backHandlerListener.remove();
+    this.focusListener.remove();
   }
 
   _onBackPress = () => {

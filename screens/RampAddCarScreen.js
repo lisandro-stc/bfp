@@ -39,12 +39,19 @@ class RampAddCar extends Component {
       }
     );
 
-    this.props.setCarInfo({uid: this.props.user.id});
-    this.props.setActiveScreen(RAMP_ADD_CAR_NAV);
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction();
+    })
   }
 
   componentWillUnmount () {
     this.backHandlerListener.remove();
+    this.focusListener.remove();
+  }
+
+  onFocusFunction = () => {
+    this.props.setCarInfo({uid: this.props.user.id});
+    this.props.setActiveScreen(RAMP_ADD_CAR_NAV);
   }
 
   render() {

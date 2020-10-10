@@ -43,8 +43,10 @@ class Footer extends Component {
     return this.props.nav.active_screen === name ? ACTIVE_SCREEN_COLOR : NOT_ACTIVE_SCREEN_COLOR;
   }
 
-  _screenMenuOnPress = name => {
-    return this.props.nav.active_screen !== name ? (() => this.props.nav.navigate(name)) : null;
+  _screenMenuOnPress = name => {    
+    if (this.props.nav.active_screen !== name) {
+      this.props.nav.navigate(name);
+    }
   }
 
   render() {
@@ -60,7 +62,7 @@ class Footer extends Component {
           name='home' 
           type='material-community' 
           color={this._screenMenuColor(HOME_NAV)}
-          onPress={this._screenMenuOnPress(HOME_NAV)}
+          onPress={() => this._screenMenuOnPress(HOME_NAV)}
         />
 
         {this.props.user.type === 'manager'
@@ -68,7 +70,7 @@ class Footer extends Component {
             name='tasklist'
             type='octicon'
             color={this._screenMenuColor(VALIDATION_HISTORY_LIST_NAV)}
-            onPress={this._screenMenuOnPress(VALIDATION_HISTORY_LIST_NAV)}
+            onPress={() => this._screenMenuOnPress(VALIDATION_HISTORY_LIST_NAV)}
           /> : null
         }
 
@@ -77,7 +79,7 @@ class Footer extends Component {
             name='tasklist'
             type='octicon'
             color={this._screenMenuColor(CAR_AVAILABLE_LIST_NAV)}
-            onPress={this._screenMenuOnPress(CAR_AVAILABLE_LIST_NAV)}
+            onPress={() => this._screenMenuOnPress(CAR_AVAILABLE_LIST_NAV)}
           /> : null
         }
 
@@ -86,7 +88,7 @@ class Footer extends Component {
             name='barcode-scan' 
             type='material-community' 
             color={this._screenMenuColor(RAMP_ADD_CAR_NAV)}
-            onPress={this._screenMenuOnPress(RAMP_ADD_CAR_NAV)}
+            onPress={() => this._screenMenuOnPress(RAMP_ADD_CAR_NAV)}
           /> : null
         }
 

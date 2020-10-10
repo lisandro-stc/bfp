@@ -76,6 +76,16 @@ class LoginScreen extends Component
       }
     });
 
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction();
+    })
+  }
+
+  componentWillUnmount () {
+    this.focusListener.remove();
+  }
+
+  onFocusFunction = () => {
     this.props.setNavigation(this.props.navigation);
     this.props.setActiveScreen(LOGIN_NAV);
   }
