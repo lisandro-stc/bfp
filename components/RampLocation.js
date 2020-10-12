@@ -41,7 +41,7 @@ class RampLocation extends Component  {
 
     return (
       <View style={{marginLeft: 10}}>
-        <Picker value={selected_location} options={list} onValueChange={picked => setSelectedLocation(picked)} />
+        <Picker value={selected_location} options={list} onValueChange={picked => setSelectedLocation(picked.key)} />
       </View>
     );
   }

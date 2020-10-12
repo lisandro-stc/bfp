@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.2",
+    "version": "1.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -19,7 +19,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.solutionsthroughcloud.bfp",
-      "buildNumber": "1.0.2",
+      "buildNumber": "1.1.1",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to allow users to send photos for processing orders. Your photos wont be shared without your permission",
         "NSPhotoLibraryUsageDescription": "This app uses the camera to allow users to send photos for processing orders. Your photos wont be shared without your permission"
